@@ -1,34 +1,21 @@
 import Grid from '@mui/material/Grid2';
-import { Card, CardActions, CardHeader, CardMedia, IconButton } from '@mui/material';
-import { ArrowForward } from '@mui/icons-material';
-import { Link } from 'react-router-dom';
+import { Card, CardContent, CardHeader } from '@mui/material';
 import * as React from 'react';
-import noPicture from '../../../assets/no-picture.png';
-import { apiUrl } from '../../../globalConstants.ts';
 
 interface Props {
   name: string;
-  id: string;
-  image?: string | null | undefined;
+  duration: number;
 }
 
-const ProductItem: React.FC<Props> = ({name, id, image}) => {
-  let productImage = noPicture;
-
-  if (image) {
-    productImage = apiUrl + '/' + image;
-  }
+const ProductItem: React.FC<Props> = ({name, duration}) => {
 
   return (
     <Grid size={{ xs: 12, sm: 12, md: 6, lg: 4 }}>
       <Card>
         <CardHeader title={name}/>
-        <CardMedia sx={{width: '100%', aspectRatio: '16/9',}} title={name} src={productImage} component='img'/>
-        <CardActions>
-          <IconButton component={Link} to={`/tracks?album=${id}`}>
-            <ArrowForward/>
-          </IconButton>
-        </CardActions>
+        <CardContent>
+          <p>Duration: {duration}</p>
+        </CardContent>
       </Card>
     </Grid>
   );
