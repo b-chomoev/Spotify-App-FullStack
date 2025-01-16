@@ -5,17 +5,15 @@ import { Link } from 'react-router-dom';
 import * as React from 'react';
 import noPicture from '../../../assets/no-picture.png';
 import { apiUrl } from '../../../globalConstants.ts';
-import { Artist } from '../../../types';
 
 interface Props {
   id: string;
   name: string;
   image?: string | null | undefined;
   date: number;
-  artist: Artist;
 }
 
-const ProductItem: React.FC<Props> = ({name, id, image, date, artist}) => {
+const ProductItem: React.FC<Props> = ({name, id, image, date}) => {
   let productImage = noPicture;
 
   if (image) {

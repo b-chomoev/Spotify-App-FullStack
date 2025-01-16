@@ -21,16 +21,6 @@ trackRouter.get('/', async (req, res, next) => {
     }
 });
 
-/* GET track and album and artist. Teacher's solution:
-*   const tracks = await Track.find(filter).populate({
-*       path: 'album',
-*       populate: {
-*           path: 'artist',
-*           model: 'Artist',
-*      }
-*   });
-*/
-
 trackRouter.post('/', async (req, res, next) => {
     if (req.body.album) {
         const album = await Album.findById(req.body.album);

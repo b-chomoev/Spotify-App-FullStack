@@ -41,7 +41,6 @@ const ArtistAlbum = () => {
                     name={album.name}
                     image={album.image}
                     date={album.date}
-                    artist={album.artist}
                   />
                 ))}
               </>
