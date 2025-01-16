@@ -10,10 +10,10 @@ const run = async () => {
     const db = mongoose.connection;
 
     try {
-        await db.dropCollection('album');
+        await db.dropCollection('albums');
         await db.dropCollection('artists');
-        await db.dropCollection('track');
-        await db.dropCollection('trackHistories');
+        await db.dropCollection('tracks');
+        await db.dropCollection('trackhistories');
         await db.dropCollection('users');
     } catch (e) {
         console.log('Collections were not present');
@@ -32,23 +32,27 @@ const run = async () => {
     const [highOffLife, futureAlbum, rassvet, alpha] = await Album.create({
         name: 'High Off Life',
         artist: future._id,
-        date: '2020-01-01',
+        date: 2020,
         image: 'fixtures/highOffLife.png',
+        track_number: 5,
     }, {
         name: 'Future',
         artist: future._id,
-        date: '2017-01-01',
+        date: 2017,
         image: 'fixtures/futureAlbum.png',
+        track_number: 5,
     },{
         name: 'Rassvet',
         artist: levanGorozia._id,
-        date: '2021-01-01',
+        date: 2021,
         image: 'fixtures/rassvet.png',
+        track_number: 5,
     }, {
         name: 'Alpha',
         artist: levanGorozia._id,
-        date: '2022-01-01',
+        date: 2022,
         image: 'fixtures/alpha.png',
+        track_number: 5,
     });
 
     await Track.create({
@@ -67,6 +71,10 @@ const run = async () => {
         name: 'Trapped In The Sun',
         album: highOffLife._id,
         duration: '3:15',
+    }, {
+        name: 'Life Is Good',
+        album: highOffLife._id,
+        duration: '4:25',
     },{
         name: 'Rent Money',
         album: futureAlbum._id,
@@ -83,6 +91,10 @@ const run = async () => {
         name: 'Draco',
         album: futureAlbum._id,
         duration: '3:15',
+    }, {
+        name: 'Life Is Good',
+        album: futureAlbum._id,
+        duration: '4:25',
     },{
         name: 'V Samamom Nachale',
         album: rassvet._id,
@@ -99,6 +111,10 @@ const run = async () => {
         name: 'Ne pokiday menya',
         album: rassvet._id,
         duration: '3:15',
+    }, {
+        name: 'Korabli',
+        album: rassvet._id,
+        duration: '4:25',
     },{
         name: 'Alpha',
         album: alpha._id,
@@ -115,6 +131,10 @@ const run = async () => {
         name: 'Bandity',
         album: alpha._id,
         duration: '3:15',
+    }, {
+        name: 'Korabli',
+        album: alpha._id,
+        duration: '4:25',
     });
 
     await db.close();
