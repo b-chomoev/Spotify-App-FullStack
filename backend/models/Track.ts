@@ -12,7 +12,10 @@ const TrackSchema = new Schema({
         ref: 'Album',
         required: [true, 'Album is required'],
     },
-    duration: String,
+    duration: {
+        type: String,
+        default: null,
+    },
 });
 
 const Track = mongoose.model('Track', TrackSchema);
