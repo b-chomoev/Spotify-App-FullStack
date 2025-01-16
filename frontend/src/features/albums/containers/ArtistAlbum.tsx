@@ -23,11 +23,11 @@ const ArtistAlbum = () => {
 
   return (
     <Grid container direction={'column'} spacing={2}>
-      <Grid container justifyContent="space-between" alignItems="center">
-        <Grid>
-          <Typography variant="h4">{albums[0].artist.name}</Typography>
-        </Grid>
-      </Grid>
+      {/*<Grid container justifyContent="space-between" alignItems="center">*/}
+      {/*  <Grid>*/}
+      {/*    <Typography variant="h4">{albums[0].artist.name}</Typography>*/}
+      {/*  </Grid>*/}
+      {/*</Grid>*/}
 
       <Grid container direction="row" spacing={1}>
         {isFetchAlbumsLoading ? <CircularProgress /> :

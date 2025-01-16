@@ -29,7 +29,7 @@ const ProductItem: React.FC<Props> = ({name, id, image, date}) => {
           <p>Release date: {date}</p>
         </CardContent>
         <CardActions>
-          <IconButton component={Link} to={'/tracks/' + id}>
+          <IconButton component={Link} to={`/tracks?album=${id}`}>
             <ArrowForward/>
           </IconButton>
         </CardActions>
