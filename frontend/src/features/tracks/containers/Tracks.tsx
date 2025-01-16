@@ -23,11 +23,13 @@ const Tracks = () => {
 
   return (
     <Grid container direction="column" spacing={1}>
-      <Grid container justifyContent="space-between" alignItems="center">
-        <Grid>
-          <Typography variant="h4">{tracks[0].album.name}</Typography>
+      {tracks.length > 0 && (
+        <Grid container justifyContent="space-between" alignItems="center">
+          <Grid>
+            <Typography variant="h4">{tracks[0].album.name}</Typography>
+          </Grid>
         </Grid>
-      </Grid>
+      )}
 
       <Grid container direction="row" spacing={1}>
         {isFetchTracksLoading ? <CircularProgress /> :
@@ -39,6 +41,7 @@ const Tracks = () => {
                     key={track._id}
                     name={track.name}
                     duration={track.duration}
+                    number={track.track_number}
                   />
                 ))}
               </>

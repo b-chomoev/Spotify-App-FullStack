@@ -19,10 +19,6 @@ const AlbumSchema = new Schema({
     image: {
         type: String,
         default: null,
-    },
-    track_number: {
-        type: Number,
-        required: true,
     }
 });
 
