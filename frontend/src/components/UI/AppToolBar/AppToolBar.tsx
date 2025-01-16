@@ -11,7 +11,7 @@ const Link = styled(NavLink)({
 
 const AppToolbar = () => {
   return (
-    <AppBar position="sticky" sx={{mb: 2, backgroundColor: 'green'}}>
+    <AppBar position="sticky" sx={{mb: 1, backgroundColor: 'green', padding: '15px'}}>
       <Toolbar>
         <Typography variant="h4" component="div" sx={{flexGrow: 1}}>
           <Link to="/">Spotify</Link>
