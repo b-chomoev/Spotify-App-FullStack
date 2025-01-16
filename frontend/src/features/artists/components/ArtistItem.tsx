@@ -25,7 +25,7 @@ const ProductItem: React.FC<Props> = ({name, id, image}) => {
         <CardHeader title={name}/>
         <CardMedia sx={{width: '100%', aspectRatio: '16/9',}} title={name} src={productImage} component='img'/>
         <CardActions>
-          <IconButton component={Link} to={'/albums/' + id}>
+          <IconButton component={Link} to={`/albums?artist=${id}`}>
             <ArrowForward/>
           </IconButton>
         </CardActions>

@@ -10,4 +10,5 @@ export interface Album {
   name: string;
   image: string | null;
   date: number;
+  artist: Artist;
 }

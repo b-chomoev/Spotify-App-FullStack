@@ -10,7 +10,7 @@ albumRouter.get('/', async (req, res, next) => {
 
     try {
         if (albumArtistQuery) {
-            const albums = await Album.find({artist: albumArtistQuery}).populate('artist', '-_id name');
+            const albums = await Album.find({artist: albumArtistQuery}).populate('artist');
             res.send(albums);
             return;
         }

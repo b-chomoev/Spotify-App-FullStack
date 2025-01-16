@@ -16,7 +16,7 @@ const App = () => {
         <Container maxWidth="xl">
           <Routes>
             <Route path="/" element={<Artists />}/>
-            <Route path="/albums/:id" element={<ArtistAlbum />}/>
+            <Route path="/albums" element={<ArtistAlbum />}/>
             <Route path="*" element={(<h1>Not found</h1>)}/>
           </Routes>
         </Container>
