@@ -12,3 +12,10 @@ export interface Album {
   date: number;
   artist: Artist;
 }
+
+export interface Track {
+  _id: string;
+  name: string;
+  duration: number;
+  album: Album;
+}
