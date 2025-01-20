@@ -1,6 +1,8 @@
 import Grid from '@mui/material/Grid2';
 import { Card, CardContent, CardHeader } from '@mui/material';
 import * as React from 'react';
+import Button from '@mui/material/Button';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 
 interface Props {
   name: string;
@@ -17,7 +19,9 @@ const ProductItem: React.FC<Props> = ({name, duration, number}) => {
         <CardContent>
           <p><strong>Duration:</strong> {duration}</p>
           <p><strong>Track Order:</strong> {number}</p>
+          <Button color='inherit'><PlayCircleIcon /></Button>
         </CardContent>
+
       </Card>
     </Grid>
   );
