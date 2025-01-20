@@ -3,6 +3,8 @@ import config from "./config";
 import Artist from "./models/Artist";
 import Album from "./models/Album";
 import Track from "./models/Track";
+import {randomUUID} from "node:crypto";
+import User from "./models/User";
 
 const run = async () => {
     await mongoose.connect(config.db);
@@ -150,6 +152,16 @@ const run = async () => {
         album: alpha._id,
         duration: '4:25',
         track_number: 5,
+    });
+
+    const [userJohn, userJane] = await User.create({
+        username: 'John',
+        password: '123',
+        token: randomUUID(),
+    }, {
+        username: 'Jane',
+        password: '123',
+        token: randomUUID(),
     });
 
     await db.close();
