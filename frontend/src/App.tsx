@@ -5,6 +5,7 @@ import Artists from "./features/artists/containers/Artists.tsx";
 import ArtistAlbum from "./features/albums/containers/ArtistAlbum.tsx";
 import Tracks from './features/tracks/containers/Tracks.tsx';
 import RegisterPage from './users/RegisterPage.tsx';
+import LoginPage from './users/LoginPage.tsx';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Route path="/albums" element={<ArtistAlbum />}/>
             <Route path="/tracks" element={<Tracks />}/>
             <Route path="/register" element={<RegisterPage />}/>
+            <Route path="/login" element={<LoginPage />}/>
             <Route path="*" element={(<h1>Not found</h1>)}/>
           </Routes>
         </Container>
