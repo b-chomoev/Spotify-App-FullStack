@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 
 const userRouter = express.Router();
 
-userRouter.post('/', async (req, res, next) => {
+userRouter.post('/register', async (req, res, next) => {
     try {
         const user = new User({
             username: req.body.username,
