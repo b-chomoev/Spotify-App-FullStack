@@ -20,6 +20,13 @@ export interface Album {
   artist: Artist;
 }
 
+export interface AlbumMutation {
+  name: string;
+  date: number;
+  artist: string;
+  image: File | null;
+}
+
 export interface Track {
   _id: string;
   name: string;
