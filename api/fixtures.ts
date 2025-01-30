@@ -154,13 +154,15 @@ const run = async () => {
         track_number: 5,
     });
 
-    const [userJohn, userJane] = await User.create({
+    await User.create({
         username: 'John',
         password: '123',
+        role: 'admin',
         token: randomUUID(),
     }, {
         username: 'Jane',
         password: '123',
+        role: 'user',
         token: randomUUID(),
     });
 

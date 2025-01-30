@@ -22,6 +22,7 @@ export interface UserField {
     username: string;
     password: string;
     token: string;
+    role: string;
 }
 
 export interface TrackHistory {
