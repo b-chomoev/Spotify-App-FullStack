@@ -9,3 +9,7 @@ export const fetchTracks = createAsyncThunk<Track[], string>(
     return response.data;
   }
 );
+
+export const createTrackHistory = createAsyncThunk(
+
+);
