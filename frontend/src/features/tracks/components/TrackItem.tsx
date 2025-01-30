@@ -6,7 +6,7 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 
 interface Props {
   name: string;
-  duration: number;
+  duration: string;
   number: number;
 }
 

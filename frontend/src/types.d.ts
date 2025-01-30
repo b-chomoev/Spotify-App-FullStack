@@ -30,9 +30,16 @@ export interface AlbumMutation {
 export interface Track {
   _id: string;
   name: string;
-  duration: number;
+  duration: string;
   track_number: number;
   album: Album;
+}
+
+export interface TrackMutation {
+  name: string;
+  duration: string;
+  track_number: number;
+  album: string;
 }
 
 export interface RegisterMutation {
