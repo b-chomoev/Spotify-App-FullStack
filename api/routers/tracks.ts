@@ -2,6 +2,7 @@ import express from "express";
 import Album from "../models/Album";
 import Track from "../models/Track";
 import auth from "../middleware/auth";
+import permit from "../middleware/permit";
 
 const trackRouter = express.Router();
 
@@ -39,6 +40,23 @@ trackRouter.post('/', auth, async (req, res, next) => {
         const track = new Track(newTrack);
         await track.save();
         res.send(track);
+    } catch (e) {
+        next(e);
+    }
+});
+
+trackRouter.delete('/:id', auth, permit('admin'),async (req, res, next) => {
+    const {id} = req.params;
+
+    try {
+        const deletedTrack = await Track.findByIdAndDelete(id);
+
+        if (!deletedTrack) {
+            res.status(404).send({error: 'Track not found'});
+            return;
+        }
+
+        res.send({message: 'Track deleted!'});
     } catch (e) {
         next(e);
     }

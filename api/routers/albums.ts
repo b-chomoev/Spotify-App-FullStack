@@ -3,6 +3,7 @@ import {imagesUpload} from "../multer";
 import Artist from "../models/Artist";
 import Album from "../models/Album";
 import auth from "../middleware/auth";
+import permit from "../middleware/permit";
 
 const albumRouter = express.Router();
 
@@ -55,6 +56,23 @@ albumRouter.post('/', imagesUpload.single('image'), auth, async (req, res, next)
         const album = new Album(albumData);
         await album.save();
         res.send(album);
+    } catch (e) {
+        next(e);
+    }
+});
+
+albumRouter.delete('/:id', auth, permit('admin'), async (req, res, next) => {
+    const {id} = req.params;
+
+    try {
+        const album = await Album.findByIdAndDelete(id);
+
+        if (!album) {
+            res.status(404).send({error: 'Album not found'});
+            return;
+        }
+
+        res.send({message: 'Album deleted'});
     } catch (e) {
         next(e);
     }

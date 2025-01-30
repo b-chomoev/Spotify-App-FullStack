@@ -14,6 +14,8 @@ const permit = (...roles: string[]) => {
             res.status(403).send({error: 'Unauthorized'});
             return;
         }
+
+        next();
     };
 }
 
