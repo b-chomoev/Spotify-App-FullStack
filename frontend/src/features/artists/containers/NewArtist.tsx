@@ -6,17 +6,21 @@ import ArtistForm from '../components/ArtistForm.tsx';
 import { ArtistMutation } from '../../../types';
 import { toast } from 'react-toastify';
 import { createArtist } from '../artistsThunks.ts';
+import { selectUser } from '../../../users/usersSlice.ts';
 
 const NewArtist = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isCreateLoading = useAppSelector(selectCreateLoading);
+  const user = useAppSelector(selectUser);
 
   const onSubmitForm = async (artist: ArtistMutation) => {
     try {
-      await dispatch(createArtist(artist)).unwrap();
-      toast.success('Artist was successfully created!');
-      navigate('/artists');
+      if (user !== null) {
+        await dispatch(createArtist({artist, token: user.token})).unwrap();
+        toast.success('Artist was successfully created!');
+        navigate('/');
+      }
     } catch (e) {
       toast.error('Error creating artist');
     }

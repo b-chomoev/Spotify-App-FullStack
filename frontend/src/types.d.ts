@@ -9,7 +9,7 @@ export interface ArtistMutation {
   name: string;
   description: string;
   image: File | null;
-  isPublished: boolean;
+  // isPublished: boolean;
 }
 
 export interface Album {

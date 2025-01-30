@@ -13,7 +13,7 @@ const initialState = {
   name: '',
   image: null,
   description: '',
-  isPublished: false,
+  // isPublished: false,
 };
 
 const ArtistForm: React.FC<Props> = ({onSubmit}) => {
