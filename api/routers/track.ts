@@ -1,6 +1,7 @@
 import express from "express";
 import Album from "../models/Album";
 import Track from "../models/Track";
+import auth from "../middleware/auth";
 
 const trackRouter = express.Router();
 
@@ -21,7 +22,7 @@ trackRouter.get('/', async (req, res, next) => {
     }
 });
 
-trackRouter.post('/', async (req, res, next) => {
+trackRouter.post('/', auth, async (req, res, next) => {
     if (req.body.album) {
         const album = await Album.findById(req.body.album);
 

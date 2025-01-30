@@ -1,6 +1,7 @@
 import express from "express";
 import Artist from "../models/Artist";
 import {imagesUpload} from "../multer";
+import auth from "../middleware/auth";
 
 const artistRouter = express.Router();
 
@@ -13,7 +14,7 @@ artistRouter.get('/', async (req, res, next) => {
     }
 });
 
-artistRouter.post('/', imagesUpload.single('image'), async (req, res, next) => {
+artistRouter.post('/', imagesUpload.single('image'), auth, async (req, res, next) => {
     if (!req.body.name) {
         res.status(400).send({error: 'Name must be present in the request'});
         return;

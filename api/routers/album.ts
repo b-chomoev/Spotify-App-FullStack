@@ -2,6 +2,7 @@ import express from "express";
 import {imagesUpload} from "../multer";
 import Artist from "../models/Artist";
 import Album from "../models/Album";
+import auth from "../middleware/auth";
 
 const albumRouter = express.Router();
 
@@ -36,7 +37,7 @@ albumRouter.get('/:id', async (req, res, next) => {
     }
 });
 
-albumRouter.post('/', imagesUpload.single('image'), async (req, res, next) => {
+albumRouter.post('/', imagesUpload.single('image'), auth, async (req, res, next) => {
     if (req.body.artist) {
         const artist = await Artist.findById(req.body.artist);
 
