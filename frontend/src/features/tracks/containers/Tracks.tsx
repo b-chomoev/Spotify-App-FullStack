@@ -1,11 +1,12 @@
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { selectFetchLoading, selectTracks } from '../tracksSlice.ts';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { fetchTracks } from '../tracksThunks.ts';
-import { CircularProgress, Typography } from '@mui/material';
+import { Button, CircularProgress, Typography } from '@mui/material';
 import TrackItem from "../components/TrackItem.tsx";
 import Grid from '@mui/material/Grid2';
+import { selectUser } from '../../../users/usersSlice.ts';
 
 const Tracks = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +15,7 @@ const Tracks = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get('album');
+  const user = useAppSelector(selectUser);
 
   useEffect(() => {
     if (id) {
@@ -30,6 +32,14 @@ const Tracks = () => {
           </Grid>
         </Grid>
       )}
+
+      <Grid>
+        {user && (
+            <Button color="primary" component={Link} to="/track/new">
+              Add Track
+            </Button>
+        )}
+      </Grid>
 
       <Grid container direction="row" spacing={1}>
         {isFetchTracksLoading ? <CircularProgress /> :

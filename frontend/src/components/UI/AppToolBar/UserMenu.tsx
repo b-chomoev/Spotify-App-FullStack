@@ -32,8 +32,6 @@ const UserMenu: React.FC<Props> = ({user}) => {
         Hello, {user.username}
       </Button>
       <Menu anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-        <MenuItem>Profile</MenuItem>
-        <MenuItem>My Account</MenuItem>
         <MenuItem onClick={handleLogOut}>Log Out</MenuItem>
       </Menu>
     </>

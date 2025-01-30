@@ -1,19 +1,21 @@
-import { CircularProgress, Typography } from '@mui/material';
+import { Button, CircularProgress, Typography } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks.ts';
 import { selectAlbums, selectFetchLoading } from '../albumsSlice.ts';
 import Grid from '@mui/material/Grid2';
 import AlbumItem from '../components/AlbumItem.tsx';
 import { fetchAlbums } from '../albumsThunks.ts';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { selectUser } from '../../../users/usersSlice.ts';
 
-const ArtistAlbum = () => {
+const Albums = () => {
   const dispatch = useAppDispatch();
   const albums = useAppSelector(selectAlbums);
   const isFetchAlbumsLoading = useAppSelector(selectFetchLoading);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get('artist');
+  const user = useAppSelector(selectUser);
 
   useEffect(() => {
     if (id) {
@@ -30,6 +32,14 @@ const ArtistAlbum = () => {
           </Grid>
         </Grid>
       )}
+
+      <Grid>
+        {user && (
+            <Button color="primary" component={Link} to="/album/new">
+              Add Album
+            </Button>
+        )}
+      </Grid>
 
       <Grid container direction="row" spacing={1}>
         {isFetchAlbumsLoading ? <CircularProgress /> :
@@ -54,4 +64,4 @@ const ArtistAlbum = () => {
   );
 };
 
-export default ArtistAlbum;
+export default Albums;

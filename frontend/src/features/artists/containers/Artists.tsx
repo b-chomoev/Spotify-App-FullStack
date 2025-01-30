@@ -1,11 +1,12 @@
 import { useAppDispatch, useAppSelector } from '../../../app/hooks.ts';
 import { selectArtists, selectFetchLoading } from '../artistsSlice.ts';
 import Grid from '@mui/material/Grid2';
-import { CircularProgress, Typography } from '@mui/material';
+import { Button, CircularProgress, Typography } from '@mui/material';
 import ArtistItem from '../components/ArtistItem.tsx';
 import { useEffect } from 'react';
 import { fetchArtists } from '../artistsThunks.ts';
 import { selectUser } from '../../../users/usersSlice.ts';
+import { Link } from 'react-router-dom';
 
 const Artists = () => {
   const user = useAppSelector(selectUser);
@@ -26,6 +27,22 @@ const Artists = () => {
               <Grid>
                 <Typography variant="h4">Artists</Typography>
               </Grid>
+            </Grid>
+
+            <Grid>
+              {user && (
+                <>
+                  <Button color="primary" component={Link} to="/artist/new">
+                    Add Artist
+                  </Button>
+                  {/*<Button color="primary" component={Link} to="/artist/new">*/}
+                  {/*  Add Album*/}
+                  {/*</Button>*/}
+                  {/*<Button color="primary" component={Link} to="/artist/new">*/}
+                  {/*  Add Track*/}
+                  {/*</Button>*/}
+                </>
+              )}
             </Grid>
 
             <Grid container direction="row" spacing={1}>

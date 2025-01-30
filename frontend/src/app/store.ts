@@ -10,7 +10,7 @@ import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist
 const userPersistConfig = {
   key: 'store:users',
   storage,
-  whitelist: ['user'], // slice state
+  whitelist: ['user'],
 };
 
 const rootReducer = combineReducers({
